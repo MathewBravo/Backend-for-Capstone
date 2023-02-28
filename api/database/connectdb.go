@@ -16,5 +16,4 @@ func EstablishConnection() {
 	if err != nil {
 		log.Fatalf("The following error occured. Err: %s", err)
 	}
-
 }

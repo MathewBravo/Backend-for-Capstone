@@ -8,6 +8,7 @@ import (
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	"log"
+	"os"
 )
 
 func loadenv() {
@@ -26,7 +27,12 @@ func main() {
 
 	routes.RouteFetch(router)
 
-	err = router.Run("localhost:8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	err = router.Run(":" + port)
 	if err != nil {
 		fmt.Println("Error running router on port 8080")
 	}
